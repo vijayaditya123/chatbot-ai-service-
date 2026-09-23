@@ -1,0 +1,5 @@
+.env
+appsettings.json
+__pycache__/
+*.pyc
+chroma_db/
