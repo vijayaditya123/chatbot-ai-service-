@@ -7,7 +7,6 @@ def get_embeddings():
         cohere_api_key=COHERE_API_KEY,   # lowercase
         base_url=COHERE_BASE_URL, 
         model="embed-v4.0",
-        input_type="search_document"
     )
 
 def store_chunks(chunks,index_name):
@@ -20,16 +19,9 @@ def store_chunks(chunks,index_name):
     vectorstore.add_documents(chunks)
     return vectorstore
 
-def query_embeddings():
-    return CohereEmbeddings(
-        cohere_api_key=COHERE_API_KEY,   # lowercase
-        base_url=COHERE_BASE_URL, 
-        model="embed-v4.0",
-        input_type="search_query"
-    )
 
 def search_chunks(query,index_name):
-    embedding = query_embeddings()
+    embedding = get_embeddings()
     vectorstore= Chroma(
         collection_name = index_name,
         embedding_function= embedding,
