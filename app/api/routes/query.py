@@ -10,6 +10,7 @@ async def user_question(
      index_name: str = Form(...),
      user_question:str =Form(...),
     ):
+     print("USER_QUERY ENDPOINT HIT")
      results = search_chunks(user_question, index_name)
      context = "\n".join([r.page_content for r in results])
      messages = [
